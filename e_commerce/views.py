@@ -18,6 +18,6 @@ def about_page(request):
 def contact_page(request):
     context = {
         'title': 'Contato O Bon Vivant',
-        'content': 'Bem-vindo a página contato!'
+        'content': 'Bem-vindo a página de contato!'
     }
     return render(request, 'contact/view.html', context)
