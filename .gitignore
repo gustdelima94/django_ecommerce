@@ -1,0 +1,4 @@
+*.pyc
+__pychace__/
+
+*.sqlite3
