@@ -38,11 +38,10 @@ class ContactForm(forms.Form):
 
 
 class RegisterForm(forms.Form):
-    username = forms.CharField()
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput)
-    password2 = forms.CharField(
-                label='Repita a senha', widget=forms.PasswordInput)
+    username = forms.CharField(label='Nome')
+    email = forms.EmailField(label='E-mail')
+    password = forms.CharField(label='Senha', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Confirme a senha', widget=forms.PasswordInput)
 
     def clean_username(self):
         username = self.cleaned_data['username']
@@ -56,6 +55,7 @@ class RegisterForm(forms.Form):
         qs = User.objects.filter(email=email)
         if qs.exists():
             raise forms.ValidationError('Esse e-mail já existe. Informe outro e-mail.')
+        return email
     
     def clean(self):
         data = self.cleaned_data
@@ -64,6 +64,7 @@ class RegisterForm(forms.Form):
         if password != password2:
             raise forms.ValidationError('As senhas não coincidem. Informe senhas iguais.')
         return data
+
 
 class LoginForm(forms.Form):
     username = forms.CharField()
