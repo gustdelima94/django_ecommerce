@@ -5,4 +5,4 @@ from .models import Product
 
 # Create your views here.
 class ProductListView(ListView):
-    products = Product.objects.all()
+    queryset = Product.objects.all()
