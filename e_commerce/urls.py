@@ -25,6 +25,7 @@ from .views import home_page
 from .views import login_page
 from .views import register_page
 
+from products.views import ProductDetailView
 from products.views import ProductListView
 
 
@@ -33,6 +34,7 @@ urlpatterns = [
     path('login/', login_page),
     path('register/', register_page),
     path('products/', ProductListView.as_view()),
+    path('products/<int:pk>', ProductDetailView.as_view()),
     path('about/', about_page),
     path('contact/', contact_page),
     path('admin/', admin.site.urls)
