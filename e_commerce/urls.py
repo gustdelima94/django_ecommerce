@@ -27,6 +27,7 @@ from .views import register_page
 
 from products.views import ProductDetailView
 from products.views import ProductListView
+from products.views import ProductDetailSlugView
 
 
 urlpatterns = [
@@ -37,7 +38,8 @@ urlpatterns = [
     path('products/<int:pk>', ProductDetailView.as_view()),
     path('about/', about_page),
     path('contact/', contact_page),
-    path('admin/', admin.site.urls)
+    path('admin/', admin.site.urls),
+    path('products/<slug:slug>/', ProductDetailSlugView.as_view())
 ]
 
 if settings.DEBUG:
